@@ -1,4 +1,4 @@
 # stat545_md_explorer
-A repository for exploring version control and markdown
+new branch commit 
 
 This repo is part of a STAT 545 exercise to explore GitHub and markdown.

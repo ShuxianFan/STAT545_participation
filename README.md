@@ -5,6 +5,8 @@ The first course meeting's activity can be found below.
 
 Here is the table for the upcoming activities:
 
+This line is added locally 
+
 
 
 ## stat545_md_explorer

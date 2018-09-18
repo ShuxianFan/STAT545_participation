@@ -96,7 +96,9 @@ gapminder %>%
 
 2. Of those, only take data from Asia.
 ```{r}
-
+gapminder %>%
+  filter(pop>100000000)%>%
+  filter(continent =="Asia")
 ```
 
 
@@ -121,6 +123,9 @@ if (my_commute > 30) {
 ```
 
 Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these steps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
+```{r}
+
+```
 
 1. Wrap the above block of code in the `expr()` function from the `rlang` package.
 2. Use the `eval()` function to execute the code, to see if the code runs.
@@ -129,15 +134,42 @@ Your task is to use metaprogramming to check whether a response (like the one ab
 # Relational/Comparison and Logical Operators in R
 
 1. Find all entries of Canada and Algeria occuring in the '60s. 
+```{r}
+gapminder%>%
+  filter((country =="Canada"|country =="Algeria") & year>=1960 & year<=1970)
+
+gapminder%>%
+  filter(country %in% c("Canada", "Algeria"))
+  
+```
+
 
 2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
+```{r}
+gapminder%>%
+  filter((country == "Canada")|(country=="Algeria"& year>=1960 & year<=1970 ))
+```
+
+
 3. Find all entries _not_ including Canada and Algeria.
+```{r}
+gapminder%>%
+  filter(country!="Canada"|country!="Algeria")
+```
+
 
 # Bonus Exercises
 
 If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
 
 1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+```{r}
+gapminder%>%
+  filter((continent=="Europe")& gdpPercap>10000)%>%
+          select(-gdpPercap)
+  
+```
+
 
 2. Take the first three columns, and extract the names.
 

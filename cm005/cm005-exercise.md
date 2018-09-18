@@ -21,7 +21,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ──────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -32,7 +32,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -293,6 +293,28 @@ gapminder %>%
 
 2. Of those, only take data from Asia.
 
+```r
+gapminder %>%
+  filter(pop>100000000)%>%
+  filter(continent =="Asia")
+```
+
+```
+## # A tibble: 52 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 China      Asia       1952    44   556263527      400.
+##  7 China      Asia       1957    50.5 637408000      576.
+##  8 China      Asia       1962    44.5 665770000      488.
+##  9 China      Asia       1967    58.4 754550000      613.
+## 10 China      Asia       1972    63.1 862030000      677.
+## # ... with 42 more rows
+```
 
 
 
@@ -317,6 +339,7 @@ if (my_commute > 30) {
 
 Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these steps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
 
+
 1. Wrap the above block of code in the `expr()` function from the `rlang` package.
 2. Use the `eval()` function to execute the code, to see if the code runs.
 3. Use the `as.character()` function to check whether this response contains an `if` statement.
@@ -325,14 +348,126 @@ Your task is to use metaprogramming to check whether a response (like the one ab
 
 1. Find all entries of Canada and Algeria occuring in the '60s. 
 
+```r
+gapminder%>%
+  filter((country =="Canada"|country =="Algeria") & year>=1960 & year<=1970)
+```
+
+```
+## # A tibble: 4 x 6
+##   country continent  year lifeExp      pop gdpPercap
+##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Algeria Africa     1962    48.3 11000948     2551.
+## 2 Algeria Africa     1967    51.4 12760499     3247.
+## 3 Canada  Americas   1962    71.3 18985849    13462.
+## 4 Canada  Americas   1967    72.1 20819767    16077.
+```
+
+```r
+gapminder%>%
+  filter(country %in% c("Canada", "Algeria"))
+```
+
+```
+## # A tibble: 24 x 6
+##    country continent  year lifeExp      pop gdpPercap
+##    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Algeria Africa     1952    43.1  9279525     2449.
+##  2 Algeria Africa     1957    45.7 10270856     3014.
+##  3 Algeria Africa     1962    48.3 11000948     2551.
+##  4 Algeria Africa     1967    51.4 12760499     3247.
+##  5 Algeria Africa     1972    54.5 14760787     4183.
+##  6 Algeria Africa     1977    58.0 17152804     4910.
+##  7 Algeria Africa     1982    61.4 20033753     5745.
+##  8 Algeria Africa     1987    65.8 23254956     5681.
+##  9 Algeria Africa     1992    67.7 26298373     5023.
+## 10 Algeria Africa     1997    69.2 29072015     4797.
+## # ... with 14 more rows
+```
+
+
 2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
+
+```r
+gapminder%>%
+  filter((country == "Canada")|(country=="Algeria"& year>=1960 & year<=1970 ))
+```
+
+```
+## # A tibble: 14 x 6
+##    country continent  year lifeExp      pop gdpPercap
+##    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Algeria Africa     1962    48.3 11000948     2551.
+##  2 Algeria Africa     1967    51.4 12760499     3247.
+##  3 Canada  Americas   1952    68.8 14785584    11367.
+##  4 Canada  Americas   1957    70.0 17010154    12490.
+##  5 Canada  Americas   1962    71.3 18985849    13462.
+##  6 Canada  Americas   1967    72.1 20819767    16077.
+##  7 Canada  Americas   1972    72.9 22284500    18971.
+##  8 Canada  Americas   1977    74.2 23796400    22091.
+##  9 Canada  Americas   1982    75.8 25201900    22899.
+## 10 Canada  Americas   1987    76.9 26549700    26627.
+## 11 Canada  Americas   1992    78.0 28523502    26343.
+## 12 Canada  Americas   1997    78.6 30305843    28955.
+## 13 Canada  Americas   2002    79.8 31902268    33329.
+## 14 Canada  Americas   2007    80.7 33390141    36319.
+```
+
+
 3. Find all entries _not_ including Canada and Algeria.
+
+```r
+gapminder%>%
+  filter(country!="Canada"|country!="Algeria")
+```
+
+```
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # ... with 1,694 more rows
+```
+
 
 # Bonus Exercises
 
 If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
 
 1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+
+```r
+gapminder%>%
+  filter((continent=="Europe")& gdpPercap>10000)%>%
+          select(-gdpPercap)
+```
+
+```
+## # A tibble: 214 x 5
+##    country continent  year lifeExp     pop
+##    <fct>   <fct>     <int>   <dbl>   <int>
+##  1 Austria Europe     1962    69.5 7129864
+##  2 Austria Europe     1967    70.1 7376998
+##  3 Austria Europe     1972    70.6 7544201
+##  4 Austria Europe     1977    72.2 7568430
+##  5 Austria Europe     1982    73.2 7574613
+##  6 Austria Europe     1987    74.9 7578903
+##  7 Austria Europe     1992    76.0 7914969
+##  8 Austria Europe     1997    77.5 8069876
+##  9 Austria Europe     2002    79.0 8148312
+## 10 Austria Europe     2007    79.8 8199783
+## # ... with 204 more rows
+```
+
 
 2. Take the first three columns, and extract the names.
 

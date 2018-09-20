@@ -163,21 +163,39 @@ Let's make *box plots* of population for each continent. Note: y-axis is much be
 
 1.  Fill out the grammar components below. Again, bold *must* be specified to make a `ggplot2` plot.
 
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| **data**              | `gapminder`   |
-| **aesthetic mapping** |               |
-| **geometric object**  |               |
-| scale                 |               |
-| statistical transform |               |
+| Grammar Component     | Specification    |
+|-----------------------|------------------|
+| **data**              | `gapminder`      |
+| **aesthetic mapping** | `x` and `y`      |
+| **geometric object**  | boxplot          |
+| scale                 | log scale        |
+| statistical transform | 5-number summary |
 
 1.  Initiate the `ggplot` call, with the log y scale, and store it in the variable `a`. Print out `a`.
 
-2.  Add the boxplot geom to `a`.
+``` r
+a = ggplot(gapminder, aes(continent, pop))+
+  scale_y_log10()
+```
 
-3.  A violin plot is a kernel density on its side, made symmetric. Add that geom to `a`.
+1.  Add the boxplot geom to `a`.
+
+``` r
+a+geom_boxplot()
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-11-1.png)
+
+1.  A violin plot is a kernel density on its side, made symmetric. Add that geom to `a`.
     -   What's better here, boxplots or violin plots? Why?
-4.  Optional: git stage and commit
+
+``` r
+a+geom_violin()
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-12-1.png)
+
+1.  Optional: git stage and commit
 
 **Use of boxplot**: Visualize 1-dimensional distributions (of a single numeric variable).
 
@@ -190,15 +208,35 @@ Let's hold off on identifying the grammar.
 
 1.  Initiate the `ggplot` call to make a scatterplot of `continent` vs `pop`; initiate the log y scale. Store the call in the variable `b`.
 
-2.  Add the point geom to `b`. Why is this an ineffective plot?
+``` r
+a+geom_point(alpha = 0.1,)
+```
 
-3.  A solution is to jitter the points. Add the jitter geom. Re-run the command a few times -- does the plot change? Why?
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
-4.  How does the grammar differ from a box plot or violin plot?
+1.  Add the point geom to `b`. Why is this an ineffective plot?
+
+2.  A solution is to jitter the points. Add the jitter geom. Re-run the command a few times -- does the plot change? Why?
+
+``` r
+a+geom_jitter()
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-14-1.png)
+
+1.  How does the grammar differ from a box plot or violin plot?
     -   ANSWER:
-5.  We can add multiple geom *layers* to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa.
+2.  We can add multiple geom *layers* to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa.
 
-6.  Optional: git stage and commit
+``` r
+# you can see the number that's in the violin plot
+a+geom_violin()+
+  geom_jitter(alpha=0.2)
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-15-1.png)
+
+1.  Optional: git stage and commit
 
 **Uses of jitterplot**: Visualize 1-dimensional distributions, AND get a sense of the sample size.
 

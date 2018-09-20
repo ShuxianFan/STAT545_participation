@@ -9,14 +9,14 @@ In this worksheet, we'll be exploring various plot types (i.e., geometric object
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ─────────────────────────────────────────────────── tidyverse 1.2.1 ──
+    ## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 
     ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
     ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
     ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
     ## ✔ readr   1.1.1     ✔ forcats 0.3.0
 
-    ## ── Conflicts ────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
@@ -250,21 +250,32 @@ Let's make some time/line plot, starting with Canada's life expectancy over time
 | Grammar Component     | Specification |
 |-----------------------|---------------|
 | **data**              | `gapminder`   |
-| **aesthetic mapping** |               |
-| **geometric object**  |               |
-| scale                 |               |
-| statistical transform |               |
+| **aesthetic mapping** | `x` and `y`   |
+| **geometric object**  | line          |
+| scale                 | none          |
+| statistical transform | none          |
 
 1.  In one readable call, write code that:
     1.  Filters the data to Canada only
     2.  Pipes the filtered data into `ggplot`
     3.  Makes the time plot of `lifeExp` over time
     4.  Also displays the points
-2.  Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
 
-3.  Use the `group` aesthetic to fix the problem.
+``` r
+gapminder%>%
+  filter(country == "Canada")%>%
+  ggplot(aes(year, lifeExp)) + 
+  geom_line() + 
+  geom_point()
+```
 
-4.  Optional: git stage and commit
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-16-1.png)
+
+1.  Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
+
+2.  Use the `group` aesthetic to fix the problem.
+
+3.  Optional: git stage and commit
 
 **Uses of time/line plots**: Visualize trends of a numeric variable over time.
 

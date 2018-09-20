@@ -219,10 +219,10 @@ Let's make some time/line plot, starting with Canada's life expectancy over time
 | Grammar Component     | Specification |
 |-----------------------|---------------|
 | __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
+| __aesthetic mapping__ | `x` and `y` |
+| __geometric object__  | line |
+| scale                 | none |
+| statistical transform | none |
 
 2. In one readable call, write code that:
     1. Filters the data to Canada only
@@ -231,10 +231,22 @@ Let's make some time/line plot, starting with Canada's life expectancy over time
     4. Also displays the points
 
 
+```{r}
+gapminder%>%
+  filter(country == "Canada")%>%
+  ggplot(aes(year, lifeExp)) + 
+  geom_line() + 
+  geom_point()
+
+```
 
 3. Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
-
-
+```{r}
+ c = ggplot(gapminder, aes(year, lifeExp))
+ c + geom_line()
+ 
+ c + geom_line(aes(group = country), alpha = 0.3)
+```
 
 4. Use the `group` aesthetic to fix the problem.
 

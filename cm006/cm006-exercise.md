@@ -273,9 +273,22 @@ gapminder%>%
 
 1.  Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
 
-2.  Use the `group` aesthetic to fix the problem.
+``` r
+ c = ggplot(gapminder, aes(year, lifeExp))
+ c + geom_line()
+```
 
-3.  Optional: git stage and commit
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-17-1.png)
+
+``` r
+ c + geom_line(aes(group = country), alpha = 0.3)
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-17-2.png)
+
+1.  Use the `group` aesthetic to fix the problem.
+
+2.  Optional: git stage and commit
 
 **Uses of time/line plots**: Visualize trends of a numeric variable over time.
 

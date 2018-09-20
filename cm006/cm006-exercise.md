@@ -108,18 +108,51 @@ Let's build a histogram of life expectancy.
 | Grammar Component     | Specification |
 |-----------------------|---------------|
 | **data**              | `gapminder`   |
-| **aesthetic mapping** |               |
-| **geometric object**  |               |
-| scale                 |               |
-| statistical transform |               |
+| **aesthetic mapping** | `x`           |
+| **geometric object**  | histogram     |
+| scale                 | linear        |
+| statistical transform | none          |
 
 1.  Build the histogram of life expectancy.
 
-2.  Change the number of bins to 50.
+``` r
+ggplot(gapminder, aes(lifeExp))+
+  geom_histogram()
+```
 
-3.  Instead of a histogram, let's create a kernel density plot.
+    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-4.  Optional: git stage and commit
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-6-1.png)
+
+1.  Change the number of bins to 50.
+
+``` r
+ggplot(gapminder, aes(lifeExp))+
+  geom_histogram(bins = 50)
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-7-1.png)
+
+1.  Instead of a histogram, let's create a kernel density plot.
+
+``` r
+ ggplot(gapminder, aes(lifeExp))+
+  geom_density(fill = "green")
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+``` r
+ggplot(gapminder, aes(lifeExp))+
+  geom_histogram(aes(y = ..density..))+
+  geom_density()
+```
+
+    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+1.  Optional: git stage and commit
 
 **Uses of a histogram**: Explore the distribution of a single numeric variable.
 

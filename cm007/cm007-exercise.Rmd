@@ -149,6 +149,17 @@ Try `cyl` (number of cylinders) ~ `am` (transmission) in the `mtcars` data frame
 - `geom_count()`.
 - `geom_bin2d()`. Compare with `geom_tile()` with `fill` aes.
 
+```{r}
+ggplot(mtcars, aes(cyl, am))+
+  geom_count()
+
+ggplot(mtcars, aes(factor(cyl), factor(am)))+
+  geom_bin2d()
+```
+
+
+
+
 ## Overplotting
 
 Try a scatterplot with:
@@ -157,6 +168,15 @@ Try a scatterplot with:
 - `geom_hex()`
 - `geom_density2d()`
 - `geom_smooth()`
+```{r}
+gvsl + geom_hex()
+
+gvsl+geom_density2d()
+
+gvsl+geom_point(alpha = 0.1) + geom_smooth(method = "lm")
+
+gvsl+geom_point()+coord_polar()
+```
 
 
 ## Bar plots
@@ -164,6 +184,12 @@ Try a scatterplot with:
 How many countries are in each continent? Use the year 2007.
 
 1. After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable `d`.
+```{r}
+gapminder %>%
+  filter(year ==2007)%>%
+  ggplot(aes(x = continent ))+
+  geom_bar()
+```
 
 
 

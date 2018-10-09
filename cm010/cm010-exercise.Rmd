@@ -217,7 +217,7 @@ Practice these concepts in the following exercises. It might help you to first i
 ### 1. Filter the rows of `flights2` by matching "year" and "time_hour" variables to `weather` dataset. Use both `semi_join()` and `anti_join()`
 
 ```{r}
-
+semi_join(flights2, weather)
 ```
 
 

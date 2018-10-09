@@ -12,7 +12,9 @@ R objects have a _type_, a _mode_, and a _class_. This can be confusing:
 ```{r}
 a <- 3
 print(typeof(a))
+
 print(mode(a))
+
 print(class(a))
 ```
 
@@ -33,6 +35,8 @@ print(class(sum))
 Usually, there's no need to fuss about these differences: just use the `is.*()` family of functions. Give it a try:
 
 ```{r}
+is.numeric(a)
+
 
 ```
 

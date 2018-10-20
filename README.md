@@ -1,6 +1,9 @@
-# STAT545_Participation - Shuxian Fan :smile_cat:
+![](matrix_codes.jpg)
 
-:large_orange_diamond: This is the repository for keeping track of the participation of the course STAT545A in UBC.
+# STAT545_Participation - Shuxian Fan :smile_cat:
+![](matrix_codes.jpg)
+
+:large_orange_diamond: This is the repository for keeping track of the participation of the course :link: [STAT 545A: Exploratory Data Analysis](http://stat545.com/Classroom/) in UBC.
 
 :large_orange_diamond: Here you can find links to the folders and files for all the class meetings. The exercise for the first class meeting can be found in the :link: [_Exercise for Class Meeting 001_](#exercise-for-class-meeting-001) section. The rest class meetings can be found in the :link: [_Class Meetings_](#class-meetings) section.
 

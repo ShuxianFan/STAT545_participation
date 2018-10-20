@@ -1,9 +1,8 @@
-![](matrix_codes.jpg)
+![](breaking.png)
 
 # STAT545_Participation - Shuxian Fan :smile_cat:
-![](matrix_codes.jpg)
 
-:large_orange_diamond: This is the repository for keeping track of the participation of the course :link: [STAT 545A: Exploratory Data Analysis](http://stat545.com/Classroom/) in UBC.
+:large_orange_diamond: This is the :octocat: GitHub repository for keeping track of the participation of the course :link: [STAT 545A: Exploratory Data Analysis](http://stat545.com/Classroom/) in UBC.
 
 :large_orange_diamond: Here you can find links to the folders and files for all the class meetings. The exercise for the first class meeting can be found in the :link: [_Exercise for Class Meeting 001_](#exercise-for-class-meeting-001) section. The rest class meetings can be found in the :link: [_Class Meetings_](#class-meetings) section.
 
@@ -36,5 +35,5 @@ This repo is part of a STAT 545 exercise to explore GitHub and markdown.
 | [cm013](https://github.com/ShuxianFan/STAT545_participation/tree/master/cm013) | [RMD](https://github.com/ShuxianFan/STAT545_participation/blob/master/cm013/cm013-exercise.Rmd), [NB.HTML](https://github.com/ShuxianFan/STAT545_participation/blob/master/cm013/cm013-exercise.nb.html), [my_plot.png](https://github.com/ShuxianFan/STAT545_participation/blob/master/cm013/my_plot.png) | Revisit `ggplot`; `plotly`; practicalities of daily figure-making
 | [cm014](https://github.com/ShuxianFan/STAT545_participation/tree/master/cm014) | [RMD](https://github.com/ShuxianFan/STAT545_participation/blob/master/cm014/cm014-exercise.Rmd), [NB.HTML](https://github.com/ShuxianFan/STAT545_participation/blob/master/cm014/cm014-exercise.nb.html) | The model-fitting paradigm in R; `broom`; deep thoughts about data analytic work
 
-
+![](breaking_inv.png)
 
